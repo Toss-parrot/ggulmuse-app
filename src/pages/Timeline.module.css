@@ -1,0 +1,159 @@
+.container {
+  min-height: 100dvh;
+  background: var(--color-gray-900);
+  color: var(--color-white);
+  padding-bottom: 120px;
+}
+
+.header {
+  padding: 24px 20px 16px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+}
+
+.currentStatus {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 12px 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 8px;
+}
+
+.currentValue {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.currentLabel {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+.currentAmount {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.currentReturn {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.timeline {
+  padding: 0 20px;
+}
+
+.entry {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  animation: fadeInEntry 0.3s ease both;
+}
+
+@keyframes fadeInEntry {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.entryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.entryDate {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+}
+
+.entryReturn {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.barWrap {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.entryValues {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+}
+
+.entryPrice { }
+.entryValue { font-weight: 600; color: rgba(255,255,255,0.7); }
+
+.event {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.eventTitle {
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+}
+
+.soldBadge {
+  margin-top: 8px;
+  padding: 6px 14px;
+  background: var(--color-danger);
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  display: inline-block;
+}
+
+.finishWrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+  background: linear-gradient(transparent, var(--color-gray-900) 30%);
+}
+
+.finishBtn {
+  width: 100%;
+  height: 56px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  transition: transform 0.12s ease;
+}
+
+.finishBtn:active {
+  transform: scale(0.98);
+}

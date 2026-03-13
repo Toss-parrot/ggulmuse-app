@@ -1,0 +1,82 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  width: 100%;
+  max-width: 340px;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: 32px 24px 24px;
+  text-align: center;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.emoji {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.peak { }
+.crash { }
+
+.title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--color-gray-500);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  height: 52px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  transition: transform 0.12s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.holdBtn {
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.sellBtn {
+  color: var(--color-white);
+  background: var(--color-danger);
+}
