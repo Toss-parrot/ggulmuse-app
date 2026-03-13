@@ -66,10 +66,10 @@ async function recordDemo(): Promise<string> {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
     viewport: VIEWPORT,
-    deviceScaleFactor: 2,
+    deviceScaleFactor: 1,
     recordVideo: {
       dir: TEMP_DIR,
-      size: { width: VIEWPORT.width * 2, height: VIEWPORT.height * 2 },
+      size: VIEWPORT,
     },
   });
 
