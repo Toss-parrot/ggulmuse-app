@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 
 .granite
+.demo-temp
 *.ait
 .pnp.*
 .yarn/

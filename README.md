@@ -8,6 +8,16 @@
 
 ---
 
+## 데모
+
+<p align="center">
+  <img src="./docs/demo.gif" width="300" alt="껄무새 데모 - 종목선택부터 결과까지" />
+</p>
+
+> `yarn demo` 한 번이면 Playwright가 자동으로 앱을 조작하고 GIF를 생성합니다.
+
+---
+
 ## 한 줄 소개
 
 **삼전 그때 샀으면 지금쯤...** 이런 후회, 숫자로 직접 체험해보세요.
@@ -95,6 +105,9 @@ npm run build
 
 # 앱인토스 배포
 npm run deploy
+
+# 데모 GIF 자동 생성
+yarn demo
 ```
 
 ## 앱인토스 테스트
