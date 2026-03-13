@@ -14,8 +14,6 @@
   <img src="./docs/demo.gif" width="540" alt="껄무새 데모 - 종목선택부터 결과까지" />
 </p>
 
-> `yarn demo` 한 번이면 Playwright가 자동으로 앱을 조작하고 GIF를 생성합니다.
-
 ---
 
 ## 한 줄 소개
