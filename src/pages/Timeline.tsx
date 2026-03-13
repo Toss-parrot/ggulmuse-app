@@ -25,6 +25,7 @@ export function Timeline({ simulation, onFinish }: Props) {
   const [decisions, setDecisions] = useState<{ date: string; action: 'hold' | 'sell' }[]>([]);
   const [sold, setSold] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const pendingRef = useRef(false);
 
   const entries = simulation.timeline.slice(0, visibleCount);
   const allRevealed = visibleCount >= simulation.timeline.length || sold;
@@ -32,16 +33,18 @@ export function Timeline({ simulation, onFinish }: Props) {
   const progress = (visibleCount / simulation.timeline.length) * 100;
 
   useEffect(() => {
-    if (pendingDecision || allRevealed) return;
+    if (pendingDecision || allRevealed || pendingRef.current) return;
 
     const timer = setTimeout(() => {
+      if (pendingRef.current) return;
+
       const nextIndex = visibleCount;
       if (nextIndex >= simulation.timeline.length) return;
 
       const nextEntry = simulation.timeline[nextIndex];
       if (nextEntry.decision) {
+        pendingRef.current = true;
         setPendingDecision(nextEntry);
-        setVisibleCount((c) => c + 1);
       } else {
         setVisibleCount((c) => c + 1);
       }
@@ -51,13 +54,15 @@ export function Timeline({ simulation, onFinish }: Props) {
   }, [visibleCount, pendingDecision, allRevealed, simulation.timeline]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [visibleCount]);
 
   const handleDecision = (action: 'hold' | 'sell') => {
     if (!pendingDecision) return;
     const newDecisions = [...decisions, { date: pendingDecision.date, action }];
     setDecisions(newDecisions);
+    setVisibleCount((c) => c + 1);
+    pendingRef.current = false;
     setPendingDecision(null);
 
     if (action === 'sell') {
@@ -206,6 +211,8 @@ export function Timeline({ simulation, onFinish }: Props) {
       {pendingDecision && pendingDecision.decision && (
         <DecisionModal
           decision={pendingDecision.decision}
+          currentReturn={pendingDecision.changePercent}
+          currentValue={pendingDecision.value}
           onChoice={handleDecision}
         />
       )}

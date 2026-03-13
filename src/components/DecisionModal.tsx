@@ -1,8 +1,11 @@
 import { DecisionPoint } from '../types';
+import { formatMoney } from '../engine/simulation';
 import styles from './DecisionModal.module.css';
 
 interface Props {
   decision: DecisionPoint;
+  currentReturn: number;
+  currentValue: number;
   onChoice: (action: 'hold' | 'sell') => void;
 }
 
@@ -18,7 +21,7 @@ const CRASH_LINES = [
   '🦜 멘탈 괜찮아? 나도 좀 무서운데...',
 ];
 
-export function DecisionModal({ decision, onChoice }: Props) {
+export function DecisionModal({ decision, currentReturn, currentValue, onChoice }: Props) {
   const isPeak = decision.type === 'peak';
   const lines = isPeak ? PEAK_LINES : CRASH_LINES;
   const randomLine = lines[Math.floor(Math.random() * lines.length)];
@@ -36,6 +39,16 @@ export function DecisionModal({ decision, onChoice }: Props) {
         </div>
 
         <h2 className={styles.title}>{decision.message}</h2>
+
+        <div className={styles.totalReturn}>
+          <span className={styles.totalReturnLabel}>내 총 수익률</span>
+          <span
+            className={styles.totalReturnValue}
+            style={{ color: currentReturn >= 0 ? '#FF6B6B' : '#6BB5FF' }}
+          >
+            {currentReturn >= 0 ? '+' : ''}{currentReturn}% ({formatMoney(currentValue)}원)
+          </span>
+        </div>
 
         <div className={styles.speechBubble}>
           <p>{randomLine}</p>

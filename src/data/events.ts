@@ -52,7 +52,7 @@ export function generateDecisionPoints(
         decisions.push({
           date: current.date,
           type: 'peak',
-          message: `+${(changeFrom3MonthsAgo * 100).toFixed(0)}% 급등! 지금 팔겠습니까?`,
+          message: `최근 3개월간 +${(changeFrom3MonthsAgo * 100).toFixed(0)}% 급등! 지금 팔겠습니까?`,
           options: ['계속 보유', '여기서 매도'],
         });
       }
@@ -65,7 +65,7 @@ export function generateDecisionPoints(
         decisions.push({
           date: current.date,
           type: 'crash',
-          message: `${(changeFrom3MonthsAgo * 100).toFixed(0)}% 하락... 버티겠습니까?`,
+          message: `최근 3개월간 ${(changeFrom3MonthsAgo * 100).toFixed(0)}% 하락... 버티겠습니까?`,
           options: ['존버', '손절'],
         });
       }
