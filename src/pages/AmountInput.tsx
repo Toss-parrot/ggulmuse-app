@@ -13,6 +13,14 @@ interface Props {
 
 const presets = [100000, 500000, 1000000, 5000000, 10000000];
 
+function getParrotReaction(amount: number): string {
+  if (amount >= 10000000) return '🦜 대박 도전이네요! 떨리쥬?';
+  if (amount >= 5000000) return '🦜 오~ 꽤 진심이시군요!';
+  if (amount >= 1000000) return '🦜 100만원, 클래식한 선택!';
+  if (amount >= 500000) return '🦜 가볍게 시작해볼까요~';
+  return '🦜 소소하지만 확실한 시뮬레이션!';
+}
+
 export function AmountInput({ stock, date, onStart, onBack }: Props) {
   const [amount, setAmount] = useState(1000000);
   const priceAtDate = getPriceAtDate(stock.id, date);
@@ -30,10 +38,14 @@ export function AmountInput({ stock, date, onStart, onBack }: Props) {
         </p>
       </header>
 
-      <div className={styles.amountDisplay}>
+      <div className={styles.parrotBubble}>
+        <p>{getParrotReaction(amount)}</p>
+      </div>
+
+      <div className={styles.amountCard}>
         <span className={styles.amountValue}>{formatMoney(amount)}원</span>
         <p className={styles.shareInfo}>
-          {priceAtDate && `당시 주가 ${priceAtDate.toLocaleString()}원 → 약 ${shares}주`}
+          {priceAtDate && `당시 주가 ${priceAtDate.toLocaleString()}원 · 약 ${shares}주`}
         </p>
       </div>
 
@@ -67,7 +79,7 @@ export function AmountInput({ stock, date, onStart, onBack }: Props) {
 
       <div className={styles.startWrap}>
         <button className={styles.startBtn} onClick={() => onStart(amount)}>
-          시간 여행 시작하기
+          <span>🦜</span> 시간 여행 출발!
         </button>
       </div>
     </div>

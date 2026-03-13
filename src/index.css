@@ -12,12 +12,15 @@
 
   --color-primary: #3182F6;
   --color-primary-light: #EBF3FE;
+  --color-primary-dark: #1B64DA;
   --color-success: #2DC76D;
   --color-success-light: #E8F7EF;
   --color-danger: #FF4545;
   --color-danger-light: #FFEBEB;
   --color-warning: #FF9F00;
   --color-warning-light: #FFF4E0;
+  --color-parrot: #55C595;
+  --color-parrot-light: #E6F8F0;
 
   --color-gray-50: #F9FAFB;
   --color-gray-100: #F2F4F6;
@@ -35,7 +38,19 @@
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 20px;
+  --radius-2xl: 24px;
   --radius-full: 9999px;
+
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-bg-light: rgba(255, 255, 255, 0.65);
+  --glass-border-light: rgba(255, 255, 255, 0.8);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-glow-blue: 0 4px 24px rgba(49, 130, 246, 0.25);
+  --shadow-glow-green: 0 4px 24px rgba(85, 197, 149, 0.25);
 }
 
 html, body, #root {
@@ -72,4 +87,35 @@ ul, li {
 
 h1, h2, h3, p {
   margin: 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-60px) rotate(360deg); opacity: 0; }
 }

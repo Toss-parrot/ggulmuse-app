@@ -34,7 +34,7 @@ export function getEventsForDateRange(startDate: string, endDate: string): NewsE
 }
 
 export function generateDecisionPoints(
-  stockId: string,
+  _stockId: string,
   prices: { date: string; price: number }[]
 ): DecisionPoint[] {
   const decisions: DecisionPoint[] = [];
