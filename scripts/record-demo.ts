@@ -171,14 +171,14 @@ function convertToGif(videoPath: string): void {
   // Pass 1: 팔레트 생성
   execFileSync('ffmpeg', [
     '-y', '-i', videoPath,
-    '-vf', 'fps=12,scale=360:-1:flags=lanczos,palettegen=max_colors=128',
+    '-vf', 'fps=12,scale=390:-1:flags=lanczos,palettegen=max_colors=128',
     paletteFile,
   ], { stdio: 'pipe' });
 
   // Pass 2: GIF 생성
   execFileSync('ffmpeg', [
     '-y', '-i', videoPath, '-i', paletteFile,
-    '-lavfi', 'fps=12,scale=360:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=3',
+    '-lavfi', 'fps=12,scale=390:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=3',
     OUTPUT_GIF,
   ], { stdio: 'pipe' });
 
